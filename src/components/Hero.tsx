@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background */}
       <div className="absolute inset-0">
         <img
@@ -26,7 +26,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto animate-slide-up">
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
             Empowering Education and Businesses with{" "}
-            <span className="gradient-accent bg-clip-text text-transparent">
+            <span className="text-accent">
               Smart Technology
             </span>
           </h1>
@@ -44,7 +44,7 @@ const Hero = () => {
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 py-6 border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
+              className="text-lg px-8 py-6 border-2 border-accent bg-accent/10 text-accent hover:bg-accent hover:text-primary-foreground"
             >
               <PlayCircle className="mr-2" size={20} />
               Watch Video
@@ -75,11 +75,11 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex items-start justify-center p-2">
           <div className="w-1 h-3 bg-accent rounded-full animate-pulse"></div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

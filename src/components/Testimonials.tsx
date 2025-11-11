@@ -59,7 +59,7 @@ const Testimonials = () => {
           {/* Header */}
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              What Our <span className="gradient-accent bg-clip-text text-transparent">Clients Say</span>
+              What Our <span className="text-accent">Clients Say</span>
             </h2>
             <div className="w-24 h-1 gradient-accent mx-auto mb-6"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">

@@ -40,7 +40,7 @@ const ProductShowcase = () => {
               <span className="text-accent font-semibold">Our Flagship Product</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Introducing <span className="gradient-accent bg-clip-text text-transparent">e-HAZIR</span>
+              Introducing <span className="text-accent">e-HAZIR</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A revolutionary smart education platform that transforms how schools manage 

@@ -51,7 +51,7 @@ const Contact = () => {
           {/* Header */}
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Get in <span className="gradient-accent bg-clip-text text-transparent">Touch</span>
+              Get in <span className="text-accent">Touch</span>
             </h2>
             <div className="w-24 h-1 gradient-accent mx-auto mb-6"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
