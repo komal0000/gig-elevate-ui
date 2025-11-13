@@ -49,67 +49,67 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <div className="text-center mb-12 sm:mb-16 animate-slide-up">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
               Get in <span className="text-accent">Touch</span>
             </h2>
-            <div className="w-24 h-1 gradient-accent mx-auto mb-6"></div>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <div className="w-20 sm:w-24 h-1 gradient-accent mx-auto mb-4 sm:mb-6"></div>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Ready to transform your institution? Let's discuss how we can help you 
               achieve your goals.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
             {/* Contact Info */}
-            <div className="space-y-8 animate-fade-in">
+            <div className="space-y-6 sm:space-y-8 animate-fade-in">
               <div>
-                <h3 className="text-2xl font-bold text-foreground mb-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
                   Contact Information
                 </h3>
-                <p className="text-muted-foreground mb-8">
+                <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
                   We're here to answer any questions you may have about our products 
                   and services. Reach out to us and we'll respond as soon as we can.
                 </p>
               </div>
 
               {/* Contact Cards */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {contactInfo.map((info, index) => (
                   <a
                     key={index}
                     href={info.link}
-                    className="flex items-start gap-4 p-4 bg-card rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 group"
+                    className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 group"
                   >
-                    <div className="w-12 h-12 rounded-lg gradient-accent flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                      <info.icon className="text-primary-foreground" size={24} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg gradient-accent flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <info.icon className="text-primary-foreground" size={20} />
                     </div>
                     <div>
-                      <div className="font-semibold text-card-foreground mb-1">
+                      <div className="font-semibold text-sm sm:text-base text-card-foreground mb-1">
                         {info.title}
                       </div>
-                      <div className="text-muted-foreground">{info.content}</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">{info.content}</div>
                     </div>
                   </a>
                 ))}
               </div>
 
               {/* Map Placeholder */}
-              <div className="rounded-xl overflow-hidden shadow-medium h-64 bg-muted flex items-center justify-center">
+              <div className="rounded-xl overflow-hidden shadow-medium h-48 sm:h-56 md:h-64 bg-muted flex items-center justify-center">
                 <div className="text-center">
-                  <MapPin className="text-accent mx-auto mb-2" size={48} />
-                  <p className="text-muted-foreground">Kathmandu, Nepal</p>
+                  <MapPin className="text-accent mx-auto mb-2" size={40} />
+                  <p className="text-sm sm:text-base text-muted-foreground">Kathmandu, Nepal</p>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
             <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <div className="bg-card rounded-2xl shadow-large p-8">
-                <h3 className="text-2xl font-bold text-card-foreground mb-6">
+              <div className="bg-card rounded-2xl shadow-large p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-card-foreground mb-5 sm:mb-6">
                   Send Us a Message
                 </h3>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-card-foreground mb-2">
                       Full Name *

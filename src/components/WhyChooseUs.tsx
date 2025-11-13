@@ -37,23 +37,23 @@ const WhyChooseUs = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <div className="text-center mb-12 sm:mb-16 animate-slide-up">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
               Why Choose <span className="text-accent">GIG Innovation</span>
             </h2>
-            <div className="w-24 h-1 gradient-accent mx-auto mb-6"></div>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <div className="w-20 sm:w-24 h-1 gradient-accent mx-auto mb-4 sm:mb-6"></div>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               We combine global technology standards with local expertise to deliver 
               solutions that truly understand your needs.
             </p>
           </div>
 
           {/* Reasons Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {reasons.map((reason, index) => (
               <div
                 key={index}
-                className="group relative bg-card rounded-2xl p-8 shadow-soft hover:shadow-large transition-all duration-500 overflow-hidden animate-fade-in"
+                className="group relative bg-card rounded-2xl p-6 sm:p-8 shadow-soft hover:shadow-large transition-all duration-500 overflow-hidden animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Background Gradient */}
@@ -63,15 +63,15 @@ const WhyChooseUs = () => {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <div className="w-16 h-16 rounded-xl gradient-accent flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <reason.icon className="text-primary-foreground" size={32} />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl gradient-accent flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <reason.icon className="text-primary-foreground" size={28} />
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-card-foreground mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-card-foreground mb-3 sm:mb-4">
                     {reason.title}
                   </h3>
                   
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
                     {reason.description}
                   </p>
                 </div>
@@ -83,20 +83,20 @@ const WhyChooseUs = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="mt-16 text-center animate-slide-up" style={{ animationDelay: "0.4s" }}>
-            <div className="bg-card rounded-2xl shadow-medium p-8 md:p-12 max-w-4xl mx-auto">
-              <h3 className="text-2xl md:text-3xl font-bold text-card-foreground mb-4">
+          <div className="mt-12 sm:mt-16 text-center animate-slide-up" style={{ animationDelay: "0.4s" }}>
+            <div className="bg-card rounded-2xl shadow-medium p-6 sm:p-8 md:p-12 max-w-4xl mx-auto">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-card-foreground mb-3 sm:mb-4">
                 Ready to Transform Your Institution?
               </h3>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-5 sm:mb-6 px-2">
                 Join the growing number of educational institutions that trust GIG Innovation 
                 for their digital transformation journey.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3 gradient-accent text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                <button className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base gradient-accent text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity">
                   Schedule a Demo
                 </button>
-                <button className="px-8 py-3 border-2 border-border rounded-lg font-semibold text-foreground hover:bg-muted transition-colors">
+                <button className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base border-2 border-border rounded-lg font-semibold text-foreground hover:bg-muted transition-colors">
                   Download Brochure
                 </button>
               </div>

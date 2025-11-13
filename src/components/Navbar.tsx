@@ -33,29 +33,29 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-lg gradient-accent flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">G</span>
+            <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg gradient-accent flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-base sm:text-lg md:text-xl">G</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-primary-foreground font-bold text-lg leading-tight">
+              <span className="text-primary-foreground font-bold text-sm sm:text-base md:text-lg leading-tight">
                 GIG Innovation
               </span>
-              <span className="text-primary-foreground/80 text-xs">& Consultancy</span>
+              <span className="text-primary-foreground/80 text-[10px] sm:text-xs">& Consultancy</span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-primary-foreground hover:text-accent transition-colors duration-300 font-medium"
+                className="text-sm lg:text-base text-primary-foreground hover:text-accent transition-colors duration-300 font-medium"
               >
                 {link.name}
               </a>
             ))}
-            <Button className="gradient-accent hover:opacity-90 transition-opacity">
+            <Button className="gradient-accent hover:opacity-90 transition-opacity text-sm lg:text-base px-4 lg:px-6">
               Request Demo
             </Button>
           </div>
@@ -71,18 +71,18 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 animate-slide-up">
+          <div className="md:hidden py-3 sm:py-4 animate-slide-up">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="block py-3 text-primary-foreground hover:text-accent transition-colors"
+                className="block py-2.5 sm:py-3 text-sm sm:text-base text-primary-foreground hover:text-accent transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
               </a>
             ))}
-            <Button className="w-full mt-4 gradient-accent">Request Demo</Button>
+            <Button className="w-full mt-3 sm:mt-4 gradient-accent text-sm sm:text-base">Request Demo</Button>
           </div>
         )}
       </div>

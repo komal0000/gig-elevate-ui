@@ -24,35 +24,35 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto animate-slide-up">
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground mb-4 sm:mb-6 leading-tight">
             Empowering Education and Businesses with{" "}
             <span className="text-accent">
               Smart Technology
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-primary-foreground/90 mb-12 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto">
             Nepal's premier provider of innovative RFID-based school management, GPS tracking, 
             and intelligent automation systems through our flagship product e-HAZIR.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="gradient-accent hover:opacity-90 text-lg px-8 py-6 glow-teal">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+            <Button size="lg" className="gradient-accent hover:opacity-90 text-sm sm:text-base md:text-lg px-6 py-4 sm:px-8 sm:py-6 glow-teal">
               Request a Demo
-              <ArrowRight className="ml-2" size={20} />
+              <ArrowRight className="ml-2" size={18} />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 py-6 border-2 border-accent bg-accent/10 text-accent hover:bg-accent hover:text-primary-foreground"
+              className="text-sm sm:text-base md:text-lg px-6 py-4 sm:px-8 sm:py-6 border-2 border-accent bg-accent/10 text-accent hover:bg-accent hover:text-primary-foreground"
             >
-              <PlayCircle className="mr-2" size={20} />
+              <PlayCircle className="mr-2" size={18} />
               Watch Video
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10 mb-10 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-8 sm:mt-10 mb-8 sm:mb-10 max-w-3xl mx-auto">
             {[
               { value: "500+", label: "Students Tracked" },
               { value: "50+", label: "Schools" },
@@ -61,13 +61,13 @@ const Hero = () => {
             ].map((stat, index) => (
               <div
                 key={index}
-                className="glass-effect rounded-xl p-6 backdrop-blur-sm animate-fade-in"
+                className="glass-effect rounded-xl p-4 sm:p-5 md:p-6 backdrop-blur-sm animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-3xl md:text-4xl font-bold text-accent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-primary-foreground/80">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-primary-foreground/80">{stat.label}</div>
               </div>
             ))}
           </div>

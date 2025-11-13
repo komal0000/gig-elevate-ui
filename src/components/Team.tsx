@@ -33,19 +33,19 @@ const Team = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <div className="text-center mb-12 sm:mb-16 animate-slide-up">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
               Meet Our <span className="text-accent">Team</span>
             </h2>
-            <div className="w-24 h-1 gradient-accent mx-auto mb-6"></div>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <div className="w-20 sm:w-24 h-1 gradient-accent mx-auto mb-4 sm:mb-6"></div>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               A dedicated group of professionals passionate about transforming education 
               through technology.
             </p>
           </div>
 
           {/* Team Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {team.map((member, index) => (
               <div
                 key={index}
@@ -53,35 +53,35 @@ const Team = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Image */}
-                <div className="relative h-64 bg-gradient-to-br from-primary to-accent flex items-center justify-center overflow-hidden">
-                  <div className="text-8xl">{member.image}</div>
+                <div className="relative h-48 sm:h-56 md:h-64 bg-gradient-to-br from-primary to-accent flex items-center justify-center overflow-hidden">
+                  <div className="text-6xl sm:text-7xl md:text-8xl">{member.image}</div>
                   
                   {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4">
                     <a
                       href="#"
-                      className="w-10 h-10 bg-primary-foreground rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                      className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-foreground rounded-full flex items-center justify-center hover:scale-110 transition-transform"
                     >
-                      <Linkedin size={20} className="text-primary" />
+                      <Linkedin size={18} className="text-primary" />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-primary-foreground rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                      className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-foreground rounded-full flex items-center justify-center hover:scale-110 transition-transform"
                     >
-                      <Mail size={20} className="text-primary" />
+                      <Mail size={18} className="text-primary" />
                     </a>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-card-foreground mb-1">
+                <div className="p-4 sm:p-5 md:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-card-foreground mb-1">
                     {member.name}
                   </h3>
-                  <div className="text-accent font-medium mb-3">
+                  <div className="text-accent font-medium mb-2 sm:mb-3 text-sm sm:text-base">
                     {member.position}
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {member.bio}
                   </p>
                 </div>
@@ -90,16 +90,16 @@ const Team = () => {
           </div>
 
           {/* Join Team CTA */}
-          <div className="mt-16 text-center animate-slide-up" style={{ animationDelay: "0.4s" }}>
-            <div className="bg-card rounded-2xl shadow-medium p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-card-foreground mb-4">
+          <div className="mt-12 sm:mt-16 text-center animate-slide-up" style={{ animationDelay: "0.4s" }}>
+            <div className="bg-card rounded-2xl shadow-medium p-6 sm:p-8 max-w-2xl mx-auto">
+              <h3 className="text-xl sm:text-2xl font-bold text-card-foreground mb-3 sm:mb-4">
                 Want to Join Our Team?
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm sm:text-base text-muted-foreground mb-5 sm:mb-6 px-2">
                 We're always looking for talented individuals who share our passion 
                 for innovation in education technology.
               </p>
-              <button className="px-8 py-3 gradient-accent text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity">
+              <button className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base gradient-accent text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity">
                 View Open Positions
               </button>
             </div>

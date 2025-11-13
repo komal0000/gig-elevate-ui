@@ -57,12 +57,12 @@ const Testimonials = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <div className="text-center mb-12 sm:mb-16 animate-slide-up">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
               What Our <span className="text-accent">Clients Say</span>
             </h2>
-            <div className="w-24 h-1 gradient-accent mx-auto mb-6"></div>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <div className="w-20 sm:w-24 h-1 gradient-accent mx-auto mb-4 sm:mb-6"></div>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Trusted by leading educational institutions across Nepal for reliable, 
               innovative solutions.
             </p>
@@ -70,37 +70,37 @@ const Testimonials = () => {
 
           {/* Testimonial Card */}
           <div className="relative">
-            <div className="bg-card rounded-2xl shadow-large p-8 md:p-12 animate-fade-in">
+            <div className="bg-card rounded-2xl shadow-large p-6 sm:p-8 md:p-12 animate-fade-in">
               {/* Quote Icon */}
-              <Quote className="text-accent/20 mb-6" size={64} />
+              <Quote className="text-accent/20 mb-4 sm:mb-6" size={48} />
 
               {/* Content */}
-              <div className="mb-8">
-                <p className="text-xl md:text-2xl text-card-foreground leading-relaxed mb-6">
+              <div className="mb-6 sm:mb-8">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-card-foreground leading-relaxed mb-4 sm:mb-6">
                   "{testimonials[currentIndex].content}"
                 </p>
 
                 {/* Rating */}
-                <div className="flex gap-1 mb-6">
+                <div className="flex gap-1 mb-4 sm:mb-6">
                   {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (
                     <Star
                       key={i}
                       className="text-accent fill-accent"
-                      size={20}
+                      size={18}
                     />
                   ))}
                 </div>
               </div>
 
               {/* Author */}
-              <div className="border-t border-border pt-6">
-                <div className="font-bold text-lg text-card-foreground">
+              <div className="border-t border-border pt-4 sm:pt-6">
+                <div className="font-bold text-base sm:text-lg text-card-foreground">
                   {testimonials[currentIndex].name}
                 </div>
-                <div className="text-muted-foreground">
+                <div className="text-sm sm:text-base text-muted-foreground">
                   {testimonials[currentIndex].position}
                 </div>
-                <div className="text-accent font-medium mt-1">
+                <div className="text-accent font-medium mt-1 text-sm sm:text-base">
                   {testimonials[currentIndex].school}
                 </div>
               </div>
@@ -143,14 +143,14 @@ const Testimonials = () => {
           </div>
 
           {/* Client Logos Section */}
-          <div className="mt-16 text-center">
-            <p className="text-muted-foreground mb-8">Trusted by leading institutions</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
+          <div className="mt-12 sm:mt-16 text-center">
+            <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">Trusted by leading institutions</p>
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 opacity-50">
               {["School 1", "School 2", "School 3", "School 4", "School 5"].map(
                 (school, index) => (
                   <div
                     key={index}
-                    className="px-6 py-3 bg-muted rounded-lg text-foreground font-semibold"
+                    className="px-4 sm:px-6 py-2 sm:py-3 bg-muted rounded-lg text-foreground font-semibold text-xs sm:text-sm md:text-base"
                   >
                     {school}
                   </div>
