@@ -68,24 +68,24 @@ const Navbar = () => {
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-3 sm:py-4 animate-slide-up">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="block py-2.5 sm:py-3 text-sm sm:text-base text-primary-foreground hover:text-accent transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-            <Button className="w-full mt-3 sm:mt-4 gradient-accent text-sm sm:text-base">Request Demo</Button>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden p-4 bg-primary/95 backdrop-blur-md animate-slide-up">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="block py-2.5 sm:py-3 text-sm sm:text-base text-primary-foreground hover:text-accent transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+          <Button className="w-full mt-3 sm:mt-4 gradient-accent text-sm sm:text-base">Request Demo</Button>
+        </div>
+      )}
     </nav>
   );
 };
