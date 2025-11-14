@@ -5,22 +5,22 @@ const About = () => {
     {
       icon: Target,
       title: "Our Mission",
-      description: "To revolutionize education and business operations through cutting-edge technology solutions.",
+      description: "Digitize administrative workflows in schools, enhancing transparency, accuracy, and operational efficiency.",
     },
     {
       icon: Users,
-      title: "Our Team",
-      description: "Expert professionals dedicated to delivering innovative and reliable solutions.",
+      title: "Expert Leadership",
+      description: "Founded by Mr. Sandip Giri (Management) and Er. Jibit Khanal (Technical Excellence) for sustainable growth.",
     },
     {
       icon: Lightbulb,
       title: "Innovation",
-      description: "Constantly pushing boundaries to create smarter, more efficient systems.",
+      description: "Aligned with Digital Nepal Framework, promoting digital literacy and institutional accountability.",
     },
     {
       icon: Award,
-      title: "Excellence",
-      description: "Committed to delivering world-class quality in every project we undertake.",
+      title: "Impact",
+      description: "Targeting 50+ schools digitization in first year, empowering students, teachers, and parents.",
     },
   ];
 
@@ -35,8 +35,8 @@ const About = () => {
             </h2>
             <div className="w-20 sm:w-24 h-1 gradient-accent mx-auto mb-4 sm:mb-6"></div>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-              Founded in 2023 and based in Kathmandu, Nepal, GIG Innovation & Consultancy Pvt. Ltd. 
-              is at the forefront of technological innovation in education and business automation.
+              Founded by Mr. Sandip Giri and Er. Jibit Khanal, headquartered in Damak-4, Jhapa, 
+              GIG Innovation & Consultancy Pvt. Ltd. leads digital transformation in Nepal's education sector.
             </p>
           </div>
 
@@ -46,16 +46,15 @@ const About = () => {
               Our Story
             </h3>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
-              GIG Innovation & Consultancy was born from a vision to bridge the gap between 
-              traditional educational institutions and modern technology. We recognized the need 
-              for smart, efficient, and reliable systems that could transform how schools and 
-              businesses operate.
+              Gig Innovation and Consultancy Pvt. Ltd. embodies the vision of "Innovating Solutions, 
+              Empowering Education." Combining strong managerial leadership with advanced technical 
+              expertise, we deliver innovative, practical solutions in IT and school management systems.
             </p>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-              Through our flagship product e-HAZIR, we've pioneered RFID-based attendance tracking, 
-              GPS monitoring, and comprehensive school management solutions that serve thousands of 
-              students and educators across Nepal. Our commitment to innovation, coupled with deep 
-              understanding of local needs, makes us the trusted partner for digital transformation.
+              Our flagship product E-Hazir transforms traditional school operations into a comprehensive 
+              digital ecosystem, integrating automated attendance tracking, assignment management, library 
+              operations, accounting, communication, and safety monitoring. With offline RFID functionality 
+              and mobile applications, we ensure accessibility for both urban and rural schools across Nepal.
             </p>
           </div>
 

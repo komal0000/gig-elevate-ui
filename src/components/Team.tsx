@@ -1,29 +1,38 @@
 import { Linkedin, Mail } from "lucide-react";
+import sandipImg from "../assets/team/sandip.jpeg";
+import jibitImg from "../assets/team/jibit.jpeg";
+import sirjanImg from "../assets/team/sirjan.jpeg";
 
 const Team = () => {
   const team = [
     {
-      name: "Rajesh Kumar",
-      position: "Founder & CEO",
-      bio: "15+ years in EdTech with a passion for innovation in education.",
-      image: "👨‍💼",
+      name: "Mr. Sandip Giri",
+      position: "Co-Founder",
+      bio: "Strategic leadership, business partnerships, financial oversight, and policy formulation with extensive entrepreneurship experience.",
+      image: sandipImg,
     },
     {
-      name: "Anita Shrestha",
-      position: "CTO",
-      bio: "Expert in RFID technology and IoT solutions for educational institutions.",
-      image: "👩‍💻",
+      name: "Er. Jibit Khanal",
+      position: "Co-Founder & Technical Lead",
+      bio: "Technical supervision, automation system integration, product innovation, and quality assurance expertise.",
+      image: jibitImg,
     },
     {
-      name: "Suresh Malla",
-      position: "Head of Product",
-      bio: "Dedicated to creating user-centric solutions that solve real problems.",
+      name: "Srijan Adhikari",
+      position: "Investor & Strategic Advisor",
+      bio: "Master's in Sociology from Tribhuvan University. Expert in educational counseling, IELTS instruction, and international education guidance with extensive cross-cultural experience.",
+      image: sirjanImg,
+    },
+    {
+      name: "Chhatraman Shrestha",
+      position: "CTO and Head of Development",
+      bio: "Software development, system testing, and maintenance of E-Hazir modules.",
       image: "👨‍🎓",
     },
     {
-      name: "Priya Tamang",
-      position: "Customer Success Manager",
-      bio: "Committed to ensuring every client achieves their goals with our platform.",
+      name: "Krishna Siptungkha Rai",
+      position: "Training & Customer Success",
+      bio: "User training, after-sales support, and client satisfaction management.",
       image: "👩‍💼",
     },
   ];
@@ -54,7 +63,11 @@ const Team = () => {
               >
                 {/* Image */}
                 <div className="relative h-48 sm:h-56 md:h-64 bg-gradient-to-br from-primary to-accent flex items-center justify-center overflow-hidden">
-                  <div className="text-6xl sm:text-7xl md:text-8xl">{member.image}</div>
+                  {typeof member.image === 'string' && member.image.startsWith('http') || member.image.includes('/') ? (
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="text-6xl sm:text-7xl md:text-8xl">{member.image}</div>
+                  )}
                   
                   {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4">

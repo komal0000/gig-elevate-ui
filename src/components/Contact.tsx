@@ -13,28 +13,63 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
+    setIsSubmitting(true);
+
+    const APP_ID = 'AKfycbwxDky4GnmcEnsifpV2n3SfWLW5-0LCJlDv8bJH3H09Tr075w1ynTOItLPiz72ZJ51QHA';
+    const baseURL = `https://script.google.com/macros/s/${APP_ID}/exec`;
+
+    // Create FormData - field names must match your spreadsheet column headers exactly
+    const submitData = new FormData();
+    submitData.append('Name', formData.name);
+    submitData.append('Email', formData.email);
+    submitData.append('Message', formData.phone ? `Phone: ${formData.phone}\n\n${formData.message}` : formData.message);
+    // 'Created_at' column will be automatically filled by the script (make sure it's checking for 'Created_at' not 'Date')
+    console.log('Submitting form data:', {
+      Name: formData.name,
+      Email: formData.email,
+      Message: formData.phone ? `Phone: ${formData.phone}\n\n${formData.message}` : formData.message,
     });
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    try {
+      const res = await fetch(baseURL, {
+        method: 'POST',
+        body: submitData,
+        mode: 'no-cors', // Required for Google Apps Script
+      });
+
+      // With no-cors mode, we can't read the response, so we assume success
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error('Error during form submission:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact us directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: MapPin,
       title: "Visit Us",
-      content: "Kathmandu, Nepal",
+      content: "Damak-4, Jhapa, Koshi Province, Nepal",
       link: "#",
     },
     {
       icon: Phone,
       title: "Call Us",
-      content: "+977-1-XXXXXXX",
-      link: "tel:+9771XXXXXXX",
+      content: "Contact for details",
+      link: "#",
     },
     {
       icon: Mail,
@@ -96,9 +131,10 @@ const Contact = () => {
 
               {/* Map Placeholder */}
               <div className="rounded-xl overflow-hidden shadow-medium h-48 sm:h-56 md:h-64 bg-muted flex items-center justify-center">
-                <div className="text-center">
+                <div className="text-center px-4">
                   <MapPin className="text-accent mx-auto mb-2" size={40} />
-                  <p className="text-sm sm:text-base text-muted-foreground">Kathmandu, Nepal</p>
+                  <p className="text-sm sm:text-base text-muted-foreground font-semibold">Damak-4, Jhapa</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Koshi Province, Nepal</p>
                 </div>
               </div>
             </div>
@@ -173,8 +209,9 @@ const Contact = () => {
                     type="submit"
                     size="lg"
                     className="w-full gradient-accent hover:opacity-90"
+                    disabled={isSubmitting}
                   >
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                     <Send className="ml-2" size={20} />
                   </Button>
                 </form>

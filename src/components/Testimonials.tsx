@@ -146,16 +146,16 @@ const Testimonials = () => {
           <div className="mt-12 sm:mt-16 text-center">
             <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">Trusted by leading institutions</p>
             <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 opacity-50">
-              {["School 1", "School 2", "School 3", "School 4", "School 5"].map(
+                {["Era Evergreen English school", "Rastryanirman secondary school", "Pashupati Boarding English School", "Little Angel Boarding school"].map(
                 (school, index) => (
                   <div
-                    key={index}
-                    className="px-4 sm:px-6 py-2 sm:py-3 bg-muted rounded-lg text-foreground font-semibold text-xs sm:text-sm md:text-base"
+                  key={index}
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-muted rounded-lg text-foreground font-semibold text-xs sm:text-sm md:text-base"
                   >
-                    {school}
+                  {school}
                   </div>
                 )
-              )}
+                )}
             </div>
           </div>
         </div>

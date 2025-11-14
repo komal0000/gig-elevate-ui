@@ -51,19 +51,19 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-primary-foreground/80 mb-5 sm:mb-6 leading-relaxed text-sm sm:text-base">
-              Empowering education and businesses across Nepal with innovative 
-              RFID-based solutions and smart automation systems.
+              Innovating Solutions, Empowering Education. Transforming school operations 
+              through E-Hazir digital ecosystem across Nepal.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-2 text-xs sm:text-sm">
               <div className="flex items-center gap-2">
                 <MapPin size={14} className="text-accent" />
-                <span>Kathmandu, Nepal</span>
+                <span>Damak-4, Jhapa, Koshi Province</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={14} className="text-accent" />
-                <span>+977-1-XXXXXXX</span>
+                <span>Contact for details</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={14} className="text-accent" />
@@ -97,7 +97,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
             {/* Copyright */}
             <p className="text-primary-foreground/70 text-xs sm:text-sm text-center md:text-left">
-              © 2023-{new Date().getFullYear()} GIG Innovation & Consultancy Pvt. Ltd. All rights reserved.
+              © {new Date().getFullYear()} GIG Innovation & Consultancy Pvt. Ltd. All rights reserved.
             </p>
 
             {/* Social Links */}
