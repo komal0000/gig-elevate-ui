@@ -33,7 +33,7 @@ const Team = () => {
       name: "Krishna Siptungkha Rai",
       position: "Training & Customer Success",
       bio: "User training, after-sales support, and client satisfaction management.",
-      image: "👩‍💼",
+      image: "👨‍🎓",
     },
   ];
 
