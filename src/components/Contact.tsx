@@ -32,7 +32,8 @@ const Contact = () => {
     console.log('Submitting form data:', {
       Name: formData.name,
       Email: formData.email,
-      Message: formData.phone ? `Phone: ${formData.phone}\n\n${formData.message}` : formData.message,
+      Phone: formData.phone,
+      Message: formData.message,
     });
     try {
       const res = await fetch(baseURL, {
