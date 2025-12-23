@@ -1,41 +1,54 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import eraEvergreenLogo from "@/assets/client/era-evergreen.jpeg";
+import rastriyaNirmanLogo from "@/assets/client/rastriya-nirman.jpeg";
+import pashupatiBoardingLogo from "@/assets/client/pashupati-boarding.jpeg";
+import littleAngelsLogo from "@/assets/client/little-angels.jpeg";
+import siddharthaShishuLogo from "@/assets/client/siddhartha-shishu.jpeg";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
     {
-      name: "Dr. Ramesh Sharma",
-      position: "Principal",
-      school: "Bright Future Secondary School, Kathmandu",
+      name: "Era Evergreen English School",
+      location: "Buddhashanti-3, Jhapa",
+      logo: eraEvergreenLogo,
       content:
         "e-HAZIR has completely transformed how we manage attendance and student tracking. The RFID system is incredibly accurate, and parents love receiving real-time notifications. It's been a game-changer for our institution.",
       rating: 5,
     },
     {
-      name: "Sita Adhikari",
-      position: "School Administrator",
-      school: "Himalayan International Academy, Pokhara",
+      name: "Rastriya Nirman Secondary School",
+      location: "Timitime, Ratuwamai-10, Morang",
+      logo: rastriyaNirmanLogo,
       content:
         "The offline capability is what sold us. Being in a remote area, internet connectivity isn't always reliable. GIG's solution works seamlessly even without internet, syncing everything once we're back online.",
       rating: 5,
     },
     {
-      name: "Prakash Thapa",
-      position: "IT Director",
-      school: "Nepal Public School, Lalitpur",
+      name: "Pashupati Boarding English School",
+      location: "Kakar Vitta, Nepal",
+      logo: pashupatiBoardingLogo,
       content:
         "Implementation was smooth, and the support team is outstanding. They understood our unique requirements and customized the system perfectly. The analytics dashboard gives us insights we never had before.",
       rating: 5,
     },
     {
-      name: "Maya Gurung",
-      position: "Transport Coordinator",
-      school: "Valley View School, Bhaktapur",
+      name: "Little Angels' Boarding School",
+      location: "Charali, Duhagadi, Jhapa",
+      logo: littleAngelsLogo,
       content:
         "GPS tracking has made managing our school buses so much easier. Parents can see exactly where the bus is, and we can optimize routes. Safety concerns have significantly decreased since implementation.",
+      rating: 5,
+    },
+    {
+      name: "Siddhartha Shishu Sadan",
+      location: "Bhadrapur-5, Jhapa",
+      logo: siddharthaShishuLogo,
+      content:
+        "The comprehensive features and user-friendly interface have made daily operations much more efficient. The real-time reporting system helps us make better decisions for our students' safety and well-being.",
       rating: 5,
     },
   ];
@@ -94,14 +107,20 @@ const Testimonials = () => {
 
               {/* Author */}
               <div className="border-t border-border pt-4 sm:pt-6">
-                <div className="font-bold text-base sm:text-lg text-card-foreground">
-                  {testimonials[currentIndex].name}
-                </div>
-                <div className="text-sm sm:text-base text-muted-foreground">
-                  {testimonials[currentIndex].position}
-                </div>
-                <div className="text-accent font-medium mt-1 text-sm sm:text-base">
-                  {testimonials[currentIndex].school}
+                <div className="flex items-center gap-4 mb-3">
+                  <img 
+                    src={testimonials[currentIndex].logo} 
+                    alt={testimonials[currentIndex].name}
+                    className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-lg"
+                  />
+                  <div>
+                    <div className="font-bold text-base sm:text-lg text-card-foreground">
+                      {testimonials[currentIndex].name}
+                    </div>
+                    <div className="text-accent font-medium text-sm sm:text-base">
+                      {testimonials[currentIndex].location}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -145,17 +164,22 @@ const Testimonials = () => {
           {/* Client Logos Section */}
           <div className="mt-12 sm:mt-16 text-center">
             <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">Trusted by leading institutions</p>
-            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 opacity-50">
-                {["Era Evergreen English school", "Rastryanirman secondary school", "Pashupati Boarding English School", "Little Angel Boarding school"].map(
-                (school, index) => (
-                  <div
+            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-10">
+              {testimonials.map((school, index) => (
+                <div
                   key={index}
-                  className="px-4 sm:px-6 py-2 sm:py-3 bg-muted rounded-lg text-foreground font-semibold text-xs sm:text-sm md:text-base"
-                  >
-                  {school}
-                  </div>
-                )
-                )}
+                  className="flex flex-col items-center gap-2 transition-opacity hover:opacity-100 opacity-70"
+                >
+                  <img 
+                    src={school.logo} 
+                    alt={school.name}
+                    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
+                  />
+                  <p className="text-xs sm:text-sm font-medium text-muted-foreground text-center max-w-[120px] sm:max-w-[150px]">
+                    {school.name}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
