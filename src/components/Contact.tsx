@@ -26,7 +26,8 @@ const Contact = () => {
     const submitData = new FormData();
     submitData.append('Name', formData.name);
     submitData.append('Email', formData.email);
-    submitData.append('Message', formData.phone ? `Phone: ${formData.phone}\n\n${formData.message}` : formData.message);
+    submitData.append('Phone', formData.phone);
+    submitData.append('Message', formData.message);
     // 'Created_at' column will be automatically filled by the script (make sure it's checking for 'Created_at' not 'Date')
     console.log('Submitting form data:', {
       Name: formData.name,
