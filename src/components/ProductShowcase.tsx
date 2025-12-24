@@ -115,12 +115,12 @@ const ProductShowcase = () => {
             {/* Right: Screenshots Showcase */}
             <div className="relative animate-float order-1 lg:order-2">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-5 mb-4">
+                <TabsList className="grid w-full grid-cols-3 sm:grid-cols-5 mb-4 h-auto gap-1">
                   {screenshots.map((screenshot) => (
                     <TabsTrigger 
                       key={screenshot.id} 
                       value={screenshot.id}
-                      className="text-xs sm:text-sm"
+                      className="text-[10px] sm:text-xs md:text-sm px-2 py-2 sm:px-3 whitespace-nowrap data-[state=active]:bg-accent data-[state=active]:text-accent-foreground"
                     >
                       {screenshot.label}
                     </TabsTrigger>
@@ -128,7 +128,7 @@ const ProductShowcase = () => {
                 </TabsList>
                 {screenshots.map((screenshot) => (
                   <TabsContent key={screenshot.id} value={screenshot.id} className="mt-0">
-                    <div className="rounded-2xl overflow-hidden shadow-large border border-border">
+                    <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-large border border-border">
                       <img
                         src={screenshot.image}
                         alt={screenshot.label}
@@ -140,9 +140,9 @@ const ProductShowcase = () => {
               </Tabs>
               
               {/* Floating Card */}
-              <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-card rounded-xl p-4 sm:p-6 shadow-large max-w-[200px] sm:max-w-xs hidden md:block">
-                <div className="text-2xl sm:text-3xl font-bold text-accent mb-1 sm:mb-2">98.5%</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">
+              <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-card rounded-xl p-3 sm:p-6 shadow-large max-w-[160px] sm:max-w-xs hidden lg:block">
+                <div className="text-xl sm:text-3xl font-bold text-accent mb-1 sm:mb-2">98.5%</div>
+                <div className="text-[10px] sm:text-sm text-muted-foreground">
                   Average attendance tracking accuracy
                 </div>
               </div>
