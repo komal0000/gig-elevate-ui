@@ -1,8 +1,21 @@
+import { useState } from "react";
 import { CheckCircle, Smartphone, Monitor, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import dashboardMockup from "@/assets/dashboard-mockup.jpg";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import dashboardImg from "@/assets/screenshots/dashboard.jpeg";
+import classAttendanceImg from "@/assets/screenshots/class-attendance.jpeg";
+import attendanceDetailsImg from "@/assets/screenshots/attendance-details.jpeg";
+import studentCheckinImg from "@/assets/screenshots/student-checkin.jpeg";
+import admitCardImg from "@/assets/screenshots/admit-card.jpeg";
+import absentStudentsImg from "@/assets/screenshots/absent-students.jpeg";
+import resultSheetImg from "@/assets/screenshots/result-sheet.jpeg";
+import assessmentScoresImg from "@/assets/screenshots/assessment-scores.jpeg";
+import examMarksImg from "@/assets/screenshots/exam-marks.jpeg";
+import assessmentTrendImg from "@/assets/screenshots/assessment-trend.jpeg";
 
 const ProductShowcase = () => {
+  const [activeTab, setActiveTab] = useState("dashboard");
+
   const features = [
     "Real-time RFID attendance tracking",
     "GPS-enabled transport monitoring",
@@ -30,6 +43,14 @@ const ProductShowcase = () => {
     },
   ];
 
+  const screenshots = [
+    { id: "dashboard", label: "Dashboard", image: dashboardImg },
+    { id: "attendance", label: "Attendance", image: classAttendanceImg },
+    { id: "checkin", label: "Check-In", image: studentCheckinImg },
+    { id: "exam", label: "Exam Results", image: resultSheetImg },
+    { id: "assessment", label: "Assessment", image: assessmentScoresImg },
+  ];
+
   return (
     <section id="ehazir" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -50,7 +71,7 @@ const ProductShowcase = () => {
 
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
             {/* Left: Features */}
-            <div className="animate-fade-in">
+            <div className="animate-fade-in order-2 lg:order-1">
               <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 sm:mb-8">
                 Powerful Features for Modern Education
               </h3>
@@ -91,17 +112,35 @@ const ProductShowcase = () => {
               </Button>
             </div>
 
-            {/* Right: Dashboard Mockup */}
-            <div className="relative animate-float">
-              <div className="rounded-2xl overflow-hidden shadow-large">
-                <img
-                  src={dashboardMockup}
-                  alt="e-HAZIR Dashboard"
-                  className="w-full h-auto"
-                />
-              </div>
+            {/* Right: Screenshots Showcase */}
+            <div className="relative animate-float order-1 lg:order-2">
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                <TabsList className="grid w-full grid-cols-5 mb-4">
+                  {screenshots.map((screenshot) => (
+                    <TabsTrigger 
+                      key={screenshot.id} 
+                      value={screenshot.id}
+                      className="text-xs sm:text-sm"
+                    >
+                      {screenshot.label}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                {screenshots.map((screenshot) => (
+                  <TabsContent key={screenshot.id} value={screenshot.id} className="mt-0">
+                    <div className="rounded-2xl overflow-hidden shadow-large border border-border">
+                      <img
+                        src={screenshot.image}
+                        alt={screenshot.label}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+              
               {/* Floating Card */}
-              <div className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-card rounded-xl p-4 sm:p-6 shadow-large max-w-[200px] sm:max-w-xs hidden md:block">
+              <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-card rounded-xl p-4 sm:p-6 shadow-large max-w-[200px] sm:max-w-xs hidden md:block">
                 <div className="text-2xl sm:text-3xl font-bold text-accent mb-1 sm:mb-2">98.5%</div>
                 <div className="text-xs sm:text-sm text-muted-foreground">
                   Average attendance tracking accuracy
