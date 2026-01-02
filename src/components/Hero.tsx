@@ -2,10 +2,8 @@ import { ArrowRight, PlayCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
 import { useState } from "react";
-
 const Hero = () => {
   const [showVideo, setShowVideo] = useState(false);
-
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background */}
@@ -40,10 +38,6 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-            <Button size="lg" className="gradient-accent hover:opacity-90 text-sm sm:text-base md:text-lg px-6 py-4 sm:px-8 sm:py-6 glow-teal">
-              Request a Demo
-              <ArrowRight className="ml-2" size={18} />
-            </Button>
             <Button
               size="lg"
               variant="outline"
@@ -59,16 +53,6 @@ const Hero = () => {
           {showVideo && (
             <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm animate-fade-in p-4">
               <div className="relative w-full max-w-4xl">
-                {/* <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setShowVideo(false);
-                  }}
-                  className="absolute -top-14 right-0 text-white hover:text-accent transition-all bg-black/70 rounded-full p-3 hover:bg-accent hover:scale-110"
-                  aria-label="Close video"
-                >
-                  <X size={28} />
-                </button> */}
                 <div 
                   className="relative pt-[56.25%] bg-black rounded-lg overflow-hidden shadow-2xl"
                   onClick={(e) => e.stopPropagation()}
@@ -88,7 +72,6 @@ const Hero = () => {
               />
             </div>
           )}
-
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-8 sm:mt-10 mb-8 sm:mb-10 max-w-3xl mx-auto">
             {[
@@ -111,13 +94,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-accent rounded-full animate-pulse"></div>
-        </div>
-      </div> */}
     </section>
   );
 };
