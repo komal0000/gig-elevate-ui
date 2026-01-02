@@ -68,18 +68,24 @@ const RequestDemoModal = ({ isOpen, onClose }: RequestDemoModalProps) => {
     setIsSubmitting(true);
 
     try {
-      // Send form data to email service
-      // Configure your API endpoint in the environment variable or replace the URL below
-      const API_ENDPOINT = import.meta.env.VITE_EMAIL_API_ENDPOINT || '/api/send-demo-request';
+      // Send form data to FormSubmit.co
+      const API_ENDPOINT = import.meta.env.VITE_EMAIL_API_ENDPOINT || 'https://formsubmit.co/personaluser9800@gmail.com';
       
       const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          ...formData,
-          timestamp: new Date().toISOString(),
+          'School Type': formData.schoolType,
+          'School Name': formData.schoolName,
+          'Contact Person': formData.contactPerson,
+          'Contact Number': formData.contactNumber,
+          'School Address': formData.schoolAddress,
+          'Submitted At': new Date().toLocaleString(),
+          '_captcha': 'false',
+          '_template': 'table'
         }),
       });
 
