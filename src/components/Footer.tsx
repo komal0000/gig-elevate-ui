@@ -1,5 +1,5 @@
 import { Facebook, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
-import ehazirLogo from "@/assets/ehazir-logo.png";
+import newLogo from "@/assets/new-logo.png";
 
 const Footer = () => {
   const footerLinks = {
@@ -42,19 +42,13 @@ const Footer = () => {
         <div className="py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-3 sm:mb-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 p-1.5 backdrop-blur-sm sm:h-11 sm:w-11">
-                <img
-                  src={ehazirLogo}
-                  alt="e-HAZIR logo"
-                  className="h-full w-full object-contain drop-shadow-sm"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-base sm:text-lg leading-tight">GIG Innovation</span>
-                <span className="text-xs sm:text-sm opacity-80">& Consultancy</span>
-              </div>
-            </div>
+            {/* <div className="mb-4 sm:mb-6">
+              <img
+                src={newLogo}
+                alt="Gig Innovation logo"
+                className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain drop-shadow-sm"
+              />
+            </div> */}
             <p className="text-primary-foreground/80 mb-5 sm:mb-6 leading-relaxed text-sm sm:text-base">
               Innovating Solutions, Empowering Education. Transforming school operations 
               through E-Hazir digital ecosystem across Nepal.
@@ -84,7 +78,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.name}>
-                    <a
+                     <a
                       href={link.href}
                       className="text-sm sm:text-base text-primary-foreground/80 hover:text-accent transition-colors"
                     >

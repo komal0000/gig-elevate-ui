@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import RequestDemoModal from "./RequestDemoModal";
-import ehazirLogo from "@/assets/ehazir-logo.png";
+import newLogo from "@/assets/new-logo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,20 +35,12 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center space-x-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 p-1.5 backdrop-blur-sm sm:h-11 sm:w-11 md:h-12 md:w-12">
-              <img
-                src={ehazirLogo}
-                alt="e-HAZIR logo"
-                className="h-full w-full object-contain drop-shadow-sm"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-primary-foreground font-bold text-sm sm:text-base md:text-lg leading-tight">
-                GIG Innovation
-              </span>
-              <span className="text-primary-foreground/80 text-[10px] sm:text-xs">& Consultancy</span>
-            </div>
+          <a href="#home" className="flex items-center">
+            <img
+              src={newLogo}
+              alt="Gig Innovation logo"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-sm"
+            />
           </a>
 
           {/* Desktop Navigation */}

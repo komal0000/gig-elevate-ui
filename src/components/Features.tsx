@@ -101,8 +101,8 @@ const Features = () => {
                 className="group bg-card rounded-xl p-4 sm:p-6 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-2 animate-fade-in"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-accent/20 transition-colors">
-                  <feature.icon className="text-accent" size={20} />
+                <div className="mb-4 group-hover:scale-110 transition-transform origin-left">
+                  <feature.icon className="text-accent" size={40} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-base sm:text-lg font-semibold text-card-foreground mb-2">
                   {feature.title}

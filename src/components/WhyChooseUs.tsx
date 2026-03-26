@@ -63,8 +63,8 @@ const WhyChooseUs = () => {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <reason.icon className="text-accent" size={28} />
+                  <div className="mb-5 group-hover:scale-110 transition-transform duration-300 origin-left">
+                    <reason.icon className="text-accent" size={48} strokeWidth={1.5} />
                   </div>
                   
                   <h3 className="text-xl sm:text-2xl font-bold text-card-foreground mb-3 sm:mb-4">

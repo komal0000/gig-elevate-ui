@@ -139,14 +139,14 @@ const ProductShowcase = () => {
                   ))}
                 </TabsList>
                 <TabsContent value={activeScreenshot.id} className="mt-0">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-card shadow-large sm:rounded-2xl">
+                  <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-card shadow-large sm:rounded-2xl">
                     {screenshots.map((screenshot) => (
                       <img
                         key={screenshot.id}
                         src={screenshot.image}
                         alt={screenshot.label}
                         loading="eager"
-                        className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
+                        className={`absolute inset-0 h-full w-full object-contain bg-card transition-all duration-700 ease-out ${
                           activeTab === screenshot.id
                             ? "scale-100 opacity-100"
                             : "scale-[1.02] opacity-0"

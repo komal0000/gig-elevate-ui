@@ -1,4 +1,4 @@
-import { ArrowRight, PlayCircle, X } from "lucide-react";
+import { ArrowRight, PlayCircle, X, Building2, Users, Activity, HeadphonesIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
 import { useState } from "react";
@@ -79,25 +79,32 @@ const Hero = () => {
               />
             </div>
           )}
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-8 sm:mt-10 mb-8 sm:mb-10 max-w-3xl mx-auto">
-            {[
-              { value: "50+", label: "Current Projects" },
-              { value: "15+", label: "Active Clients" },
-              { value: "99.9%", label: "System Uptime" },
-              { value: "24/7", label: "Support" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="glass-effect rounded-xl p-4 sm:p-5 md:p-6 backdrop-blur-sm animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">
-                  {stat.value}
+          {/* Stats Capsule */}
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 w-full max-w-4xl px-4 sm:px-6">
+            <div className="bg-[#24130a] rounded-b-2xl shadow-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
+              {[
+                { icon: Building2, value: "50+", label: "Current Projects" },
+                { icon: Users, value: "15+", label: "Active Clients" },
+                { icon: Activity, value: "99.9%", label: "System Uptime" },
+                { icon: HeadphonesIcon, value: "24/7", label: "Support" },
+              ].map((stat, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-center gap-4 px-2 sm:px-4 w-full md:w-auto animate-fade-in pt-4 md:pt-0 first:pt-0"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="text-accent">
+                    <stat.icon size={28} strokeWidth={1.5} />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xl sm:text-2xl font-bold text-white leading-tight">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs sm:text-sm font-medium text-white/70 whitespace-nowrap">{stat.label}</div>
+                  </div>
                 </div>
-                <div className="text-sm font-medium text-primary-foreground">{stat.label}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

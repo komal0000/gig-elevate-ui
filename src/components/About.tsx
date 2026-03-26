@@ -66,8 +66,8 @@ const About = () => {
                 className="bg-background rounded-xl p-5 sm:p-6 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-2 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-accent/10 flex items-center justify-center mb-3 sm:mb-4">
-                  <value.icon className="text-accent" size={24} />
+                <div className="mb-4">
+                  <value.icon className="text-accent" size={40} strokeWidth={1.5} />
                 </div>
                 <h4 className="text-lg sm:text-xl font-semibold text-card-foreground mb-2 sm:mb-3">
                   {value.title}
