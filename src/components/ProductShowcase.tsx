@@ -118,10 +118,6 @@ const ProductShowcase = () => {
                   </div>
                 ))}
               </div>
-
-              <Button size="lg" className="gradient-accent hover:opacity-90 text-sm sm:text-base">
-                Explore e-HAZIR
-              </Button>
             </div>
 
             {/* Right: Screenshots Showcase */}

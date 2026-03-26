@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,16 +38,35 @@ const RequestDemoModal = ({ isOpen, onClose }: RequestDemoModalProps) => {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const scrollYRef = useRef(0);
+
+  // Lock background scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      scrollYRef.current = window.scrollY;
+      const y = scrollYRef.current;
+      // position:fixed + top trick is most reliable cross-browser
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${y}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.overflow = "";
+      window.scrollTo(0, scrollYRef.current);
     }
-    
+
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.overflow = "";
+      window.scrollTo(0, scrollYRef.current);
     };
   }, [isOpen]);
 
@@ -92,10 +111,7 @@ const RequestDemoModal = ({ isOpen, onClose }: RequestDemoModalProps) => {
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     setFieldErrors((prev) => {
-      if (!prev[field]) {
-        return prev;
-      }
-
+      if (!prev[field]) return prev;
       const nextErrors = { ...prev };
       delete nextErrors[field];
       return nextErrors;
@@ -144,9 +160,7 @@ const RequestDemoModal = ({ isOpen, onClose }: RequestDemoModalProps) => {
 
         response = await fetch(normalizedEndpoint, {
           method: 'POST',
-          headers: {
-            Accept: 'application/json',
-          },
+          headers: { Accept: 'application/json' },
           body: formPayload,
           signal: controller.signal,
         });
@@ -169,9 +183,7 @@ const RequestDemoModal = ({ isOpen, onClose }: RequestDemoModalProps) => {
         });
       }
 
-      if (!response.ok) {
-        throw new Error('Failed to send demo request');
-      }
+      if (!response.ok) throw new Error('Failed to send demo request');
 
       toast({
         title: "Demo Request Submitted!",
@@ -200,165 +212,172 @@ const RequestDemoModal = ({ isOpen, onClose }: RequestDemoModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] animate-fade-in" >
-      {/* Backdrop overlay - covers everything including navbar */}
-      <div 
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm" 
-        onClick={() => {
-          if (!isSubmitting) {
-            onClose();
-          }
-        }}
+    <>
+      {/* Full-screen fixed backdrop */}
+      <div
+        className="fixed inset-0 z-[9998] bg-black/75 backdrop-blur-sm"
+        onClick={() => { if (!isSubmitting) onClose(); }}
       />
-      
-      {/* Modal container - centered in viewport */}
-      <div className="relative z-10 flex min-h-screen items-center justify-center overflow-y-auto p-4">
-        <div className="relative w-full max-w-2xl my-4">
-          {/* Close button */}
-          <button
-            onClick={onClose}
-            disabled={isSubmitting}
-            className="absolute top-1 right-1 z-10 rounded-full bg-black/70 p-1 text-white transition-all hover:scale-80 hover:bg-accent hover:text-black disabled:cursor-not-allowed disabled:opacity-50"
-            aria-label="Close modal"
-          >
-            <X size={28} />
-          </button>
 
-          {/* Modal content */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl animate-slide-up border border-gray-200">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-              Request a <span className="text-teal-500">Demo</span>
-            </h2>
-            <p className="text-gray-600 mb-6 sm:mb-4">
-              Fill out the form below and we'll get back to you shortly to schedule your demo.
-            </p>
+      {/* Full-screen fixed scroll wrapper — sits above backdrop */}
+      <div className="fixed inset-0 z-[9999] overflow-y-auto">
+        <div
+          className="flex min-h-full items-center justify-center p-4 py-8"
+          onClick={(e) => { if (e.target === e.currentTarget && !isSubmitting) onClose(); }}
+        >
+          <div className="relative w-full max-w-lg">
+            {/* Close button */}
+            <button
+              onClick={onClose}
+              disabled={isSubmitting}
+              className="absolute -top-3 -right-3 z-10 rounded-full bg-black/80 p-1.5 text-white shadow-lg transition-all hover:bg-accent hover:text-black disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label="Close modal"
+            >
+              <X size={22} />
+            </button>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* School Type */}
-              <div className="space-y-2">
-                <Label htmlFor="schoolType" className="text-gray-700 text-base font-medium">
-                  School Type <span className="text-red-500">*</span>
-                </Label>
-                <Select
-                  value={formData.schoolType}
-                  onValueChange={(value) => handleInputChange("schoolType", value)}
-                >
-                  <SelectTrigger 
-                    id="schoolType"
-                    className="bg-white border-gray-300 text-gray-900 focus:border-teal-500 focus:ring-teal-500"
-                  >
-                    <SelectValue placeholder="Select school type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="government">Government</SelectItem>
-                    <SelectItem value="private">Private</SelectItem>
-                  </SelectContent>
-                </Select>
-                {fieldErrors.schoolType && (
-                  <p className="text-sm text-red-500">{fieldErrors.schoolType}</p>
-                )}
+            {/* Modal card */}
+            <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+              {/* Header */}
+              <div className="px-6 pt-7 pb-4 sm:px-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">
+                  Request a <span className="text-accent">Demo</span>
+                </h2>
+                <p className="text-sm text-gray-500">
+                  Fill out the form below and we'll get back to you shortly to schedule your demo.
+                </p>
               </div>
 
-              {/* School Name */}
-              <div className="space-y-2">
-                <Label htmlFor="schoolName" className="text-gray-700 text-base font-medium">
-                  School Name <span className="text-red-500">*</span>
-                </Label>
-                <Input
-                  id="schoolName"
-                  type="text"
-                  required
-                  autoComplete="organization"
-                  placeholder="Enter school name"
-                  value={formData.schoolName}
-                  onChange={(e) => handleInputChange("schoolName", e.target.value)}
-                  className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:ring-teal-500"
-                />
-                {fieldErrors.schoolName && (
-                  <p className="text-sm text-red-500">{fieldErrors.schoolName}</p>
-                )}
-              </div>
+              {/* Form body */}
+              <div className="px-6 pb-7 sm:px-8">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* School Type */}
+                  <div className="space-y-1.5">
+                    <Label htmlFor="schoolType" className="text-gray-700 font-medium">
+                      School Type <span className="text-red-500">*</span>
+                    </Label>
+                    <Select
+                      value={formData.schoolType}
+                      onValueChange={(value) => handleInputChange("schoolType", value)}
+                    >
+                      <SelectTrigger
+                        id="schoolType"
+                        className="bg-white border-gray-300 text-gray-900 focus:border-accent focus:ring-accent h-11"
+                      >
+                        <SelectValue placeholder="Select school type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="government">Government</SelectItem>
+                        <SelectItem value="private">Private</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    {fieldErrors.schoolType && (
+                      <p className="text-xs text-red-500">{fieldErrors.schoolType}</p>
+                    )}
+                  </div>
 
-              {/* Contact Person */}
-              <div className="space-y-2">
-                <Label htmlFor="contactPerson" className="text-gray-700 text-base font-medium">
-                  Contact Person <span className="text-red-500">*</span>
-                </Label>
-                <Input
-                  id="contactPerson"
-                  type="text"
-                  required
-                  autoComplete="name"
-                  placeholder="Enter contact person name"
-                  value={formData.contactPerson}
-                  onChange={(e) => handleInputChange("contactPerson", e.target.value)}
-                  className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:ring-teal-500"
-                />
-                {fieldErrors.contactPerson && (
-                  <p className="text-sm text-red-500">{fieldErrors.contactPerson}</p>
-                )}
-              </div>
+                  {/* School Name */}
+                  <div className="space-y-1.5">
+                    <Label htmlFor="schoolName" className="text-gray-700 font-medium">
+                      School Name <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="schoolName"
+                      type="text"
+                      required
+                      autoComplete="organization"
+                      placeholder="Enter school name"
+                      value={formData.schoolName}
+                      onChange={(e) => handleInputChange("schoolName", e.target.value)}
+                      className="h-11 bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-accent"
+                    />
+                    {fieldErrors.schoolName && (
+                      <p className="text-xs text-red-500">{fieldErrors.schoolName}</p>
+                    )}
+                  </div>
 
-              {/* Contact Number */}
-              <div className="space-y-2">
-                <Label htmlFor="contactNumber" className="text-gray-700 text-base font-medium">
-                  Contact Number <span className="text-red-500">*</span>
-                </Label>
-                <Input
-                  id="contactNumber"
-                  type="tel"
-                  required
-                  autoComplete="tel"
-                  placeholder="Enter contact number"
-                  value={formData.contactNumber}
-                  onChange={(e) => handleInputChange("contactNumber", e.target.value)}
-                  className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:ring-teal-500"
-                />
-                {fieldErrors.contactNumber && (
-                  <p className="text-sm text-red-500">{fieldErrors.contactNumber}</p>
-                )}
-              </div>
+                  {/* Contact Person */}
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contactPerson" className="text-gray-700 font-medium">
+                      Contact Person <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="contactPerson"
+                      type="text"
+                      required
+                      autoComplete="name"
+                      placeholder="Enter contact person name"
+                      value={formData.contactPerson}
+                      onChange={(e) => handleInputChange("contactPerson", e.target.value)}
+                      className="h-11 bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-accent"
+                    />
+                    {fieldErrors.contactPerson && (
+                      <p className="text-xs text-red-500">{fieldErrors.contactPerson}</p>
+                    )}
+                  </div>
 
-              {/* School Address */}
-              <div className="space-y-2">
-                <Label htmlFor="schoolAddress" className="text-gray-700 text-base font-medium">
-                  School Address <span className="text-red-500">*</span>
-                </Label>
-                <Input
-                  id="schoolAddress"
-                  type="text"
-                  required
-                  autoComplete="street-address"
-                  placeholder="Enter school address"
-                  value={formData.schoolAddress}
-                  onChange={(e) => handleInputChange("schoolAddress", e.target.value)}
-                  className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:ring-teal-500"
-                />
-                {fieldErrors.schoolAddress && (
-                  <p className="text-sm text-red-500">{fieldErrors.schoolAddress}</p>
-                )}
-              </div>
+                  {/* Contact Number */}
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contactNumber" className="text-gray-700 font-medium">
+                      Contact Number <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="contactNumber"
+                      type="tel"
+                      required
+                      autoComplete="tel"
+                      placeholder="Enter contact number"
+                      value={formData.contactNumber}
+                      onChange={(e) => handleInputChange("contactNumber", e.target.value)}
+                      className="h-11 bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-accent"
+                    />
+                    {fieldErrors.contactNumber && (
+                      <p className="text-xs text-red-500">{fieldErrors.contactNumber}</p>
+                    )}
+                  </div>
 
-              {/* Submit Button */}
-             <div className="pt-2">
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full gradient-accent py-2 text-base hover:opacity-90 sm:py-5 sm:text-lg glow-teal"
-              >
-                {isSubmitting ? "Submitting..." : "Submit Request"}
-              </Button>
-              <p className="mt-3 text-sm text-gray-500">
-                {isSubmitting
-                  ? "Sending your request now. Please keep this window open for a moment."
-                  : "We’ll reach out shortly after your request is submitted."}
-              </p>
+                  {/* School Address */}
+                  <div className="space-y-1.5">
+                    <Label htmlFor="schoolAddress" className="text-gray-700 font-medium">
+                      School Address <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="schoolAddress"
+                      type="text"
+                      required
+                      autoComplete="street-address"
+                      placeholder="Enter school address"
+                      value={formData.schoolAddress}
+                      onChange={(e) => handleInputChange("schoolAddress", e.target.value)}
+                      className="h-11 bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-accent"
+                    />
+                    {fieldErrors.schoolAddress && (
+                      <p className="text-xs text-red-500">{fieldErrors.schoolAddress}</p>
+                    )}
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="pt-2 pb-1">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full gradient-accent py-3 text-base font-semibold hover:opacity-90"
+                    >
+                      {isSubmitting ? "Submitting..." : "Submit Request"}
+                    </Button>
+                    <p className="mt-2 text-xs text-center text-gray-400">
+                      {isSubmitting
+                        ? "Sending your request now. Please keep this window open."
+                        : "We'll reach out shortly after your request is submitted."}
+                    </p>
+                  </div>
+                </form>
+              </div>
             </div>
-            </form>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
