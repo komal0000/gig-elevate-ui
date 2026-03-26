@@ -64,7 +64,7 @@ const ProductShowcase = () => {
   }, []);
 
   return (
-    <section id="ehazir" className="py-24 bg-muted/30">
+    <section id="ehazir" className="py-24 bg-card">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}

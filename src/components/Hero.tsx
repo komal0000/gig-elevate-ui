@@ -37,15 +37,22 @@ const Hero = () => {
             automated attendance tracking, RFID technology, and smart school management systems.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button
+              size="lg"
+              className="gradient-accent hover:opacity-90 transition-opacity text-sm sm:text-base md:text-lg px-6 py-4 sm:px-8 sm:py-6"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              Get Started
+            </Button>
             <Button
               size="lg"
               variant="outline"
-              className="text-sm sm:text-base md:text-lg px-6 py-4 sm:px-8 sm:py-6 border-2 border-accent bg-accent/10 text-accent hover:bg-accent hover:text-primary-foreground"
+              className="text-sm sm:text-base md:text-lg px-6 py-4 sm:px-8 sm:py-6 border-2 border-accent bg-transparent text-accent hover:bg-accent hover:text-primary-foreground"
               onClick={() => setShowVideo(true)}
             >
               <PlayCircle className="mr-2" size={18} />
-              Watch Video
+              Book a Demo
             </Button>
           </div>
 
@@ -75,7 +82,7 @@ const Hero = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-8 sm:mt-10 mb-8 sm:mb-10 max-w-3xl mx-auto">
             {[
-              { value: "50+", label: "Schools Target" },
+              { value: "50+", label: "Current Projects" },
               { value: "15+", label: "Active Clients" },
               { value: "99.9%", label: "System Uptime" },
               { value: "24/7", label: "Support" },
@@ -88,7 +95,7 @@ const Hero = () => {
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">
                   {stat.value}
                 </div>
-                <div className="text-xs sm:text-sm text-primary-foreground/80">{stat.label}</div>
+                <div className="text-sm font-medium text-primary-foreground">{stat.label}</div>
               </div>
             ))}
           </div>

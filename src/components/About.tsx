@@ -25,7 +25,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-background">
+    <section id="about" className="py-24 bg-card">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -41,7 +41,7 @@ const About = () => {
           </div>
 
           {/* Story */}
-          <div className="bg-card rounded-2xl shadow-medium p-6 sm:p-8 md:p-12 mb-10 sm:mb-12 animate-fade-in">
+          <div className="bg-background rounded-2xl shadow-medium p-6 sm:p-8 md:p-12 mb-10 sm:mb-12 animate-fade-in">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-card-foreground mb-4 sm:mb-6">
               Our Story
             </h3>
@@ -63,11 +63,11 @@ const About = () => {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="bg-card rounded-xl p-5 sm:p-6 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-2 animate-fade-in"
+                className="bg-background rounded-xl p-5 sm:p-6 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-2 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg gradient-accent flex items-center justify-center mb-3 sm:mb-4">
-                  <value.icon className="text-primary-foreground" size={24} />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-accent/10 flex items-center justify-center mb-3 sm:mb-4">
+                  <value.icon className="text-accent" size={24} />
                 </div>
                 <h4 className="text-lg sm:text-xl font-semibold text-card-foreground mb-2 sm:mb-3">
                   {value.title}

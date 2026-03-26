@@ -82,16 +82,16 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-24 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12 sm:mb-16 animate-slide-up">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4 sm:mb-6">
               Get in <span className="text-accent">Touch</span>
             </h2>
             <div className="w-20 sm:w-24 h-1 gradient-accent mx-auto mb-4 sm:mb-6"></div>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
+            <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 max-w-3xl mx-auto px-4">
               Ready to transform your institution? Let's discuss how we can help you 
               achieve your goals.
             </p>
@@ -101,10 +101,10 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-6 sm:space-y-8 animate-fade-in">
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
+                <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
                   Contact Information
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
+                <p className="text-sm sm:text-base text-primary-foreground/80 mb-6 sm:mb-8">
                   We're here to answer any questions you may have about our products 
                   and services. Reach out to us and we'll respond as soon as we can.
                 </p>
@@ -116,16 +116,16 @@ const Contact = () => {
                   <a
                     key={index}
                     href={info.link}
-                    className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 group"
+                    className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-primary-foreground/5 rounded-xl transition-all duration-300 group hover:bg-primary-foreground/10"
                   >
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg gradient-accent flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                       <info.icon className="text-primary-foreground" size={20} />
                     </div>
                     <div>
-                      <div className="font-semibold text-sm sm:text-base text-card-foreground mb-1">
+                      <div className="font-semibold text-sm sm:text-base text-primary-foreground mb-1">
                         {info.title}
                       </div>
-                      <div className="text-xs sm:text-sm text-muted-foreground">{info.content}</div>
+                      <div className="text-xs sm:text-sm text-primary-foreground/70">{info.content}</div>
                     </div>
                   </a>
                 ))}

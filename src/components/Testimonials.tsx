@@ -62,7 +62,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-24 bg-card relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
@@ -83,7 +83,7 @@ const Testimonials = () => {
 
           {/* Testimonial Card */}
           <div className="relative">
-            <div className="bg-card rounded-2xl shadow-large p-6 sm:p-8 md:p-12 animate-fade-in">
+            <div className="bg-background rounded-2xl shadow-large p-6 sm:p-8 md:p-12 animate-fade-in">
               {/* Quote Icon */}
               <Quote className="text-accent/20 mb-4 sm:mb-6" size={48} />
 

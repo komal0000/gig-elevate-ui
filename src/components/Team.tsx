@@ -38,7 +38,7 @@ const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-24 bg-muted/30">
+    <section id="team" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -104,16 +104,17 @@ const Team = () => {
 
           {/* Join Team CTA */}
           <div className="mt-12 sm:mt-16 text-center animate-slide-up" style={{ animationDelay: "0.4s" }}>
-            <div className="bg-card rounded-2xl shadow-medium p-6 sm:p-8 max-w-2xl mx-auto">
-              <h3 className="text-xl sm:text-2xl font-bold text-card-foreground mb-3 sm:mb-4">
-                Want to Join Our Team?
-              </h3>
-              <p className="text-sm sm:text-base text-muted-foreground mb-5 sm:mb-6 px-2">
-                We're always looking for talented individuals who share our passion 
-                for innovation in education technology.
-              </p>
-              <button className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base gradient-accent text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity">
-                View Open Positions
+            <div className="bg-primary rounded-2xl shadow-medium p-6 sm:p-8 max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="text-left">
+                <h3 className="text-xl sm:text-2xl font-bold text-primary-foreground mb-2">
+                  Want to Join Our Team?
+                </h3>
+                <p className="text-sm sm:text-base text-primary-foreground/80 max-w-md">
+                  Email your resume or inquire about opportunities to innovate with us.
+                </p>
+              </div>
+              <button className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base gradient-accent text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap">
+                See Open Positions
               </button>
             </div>
           </div>

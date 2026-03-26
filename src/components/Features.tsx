@@ -84,7 +84,7 @@ const Features = () => {
           {/* Header */}
           <div className="text-center mb-12 sm:mb-16 animate-slide-up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
-              Comprehensive <span className="text-accent">Features</span>
+              Our <span className="text-accent">Services</span>
             </h2>
             <div className="w-20 sm:w-24 h-1 gradient-accent mx-auto mb-4 sm:mb-6"></div>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">

@@ -33,7 +33,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-24 bg-muted/30">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -63,8 +63,8 @@ const WhyChooseUs = () => {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl gradient-accent flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <reason.icon className="text-primary-foreground" size={28} />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <reason.icon className="text-accent" size={28} />
                   </div>
                   
                   <h3 className="text-xl sm:text-2xl font-bold text-card-foreground mb-3 sm:mb-4">
