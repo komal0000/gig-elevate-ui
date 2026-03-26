@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CheckCircle, Smartphone, Monitor, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -50,6 +50,18 @@ const ProductShowcase = () => {
     { id: "exam", label: "Exam Results", image: resultSheetImg },
     { id: "assessment", label: "Assessment", image: assessmentScoresImg },
   ];
+
+  const activeScreenshot = useMemo(
+    () => screenshots.find((screenshot) => screenshot.id === activeTab) ?? screenshots[0],
+    [activeTab]
+  );
+
+  useEffect(() => {
+    screenshots.forEach((screenshot) => {
+      const image = new Image();
+      image.src = screenshot.image;
+    });
+  }, []);
 
   return (
     <section id="ehazir" className="py-24 bg-muted/30">
@@ -126,17 +138,23 @@ const ProductShowcase = () => {
                     </TabsTrigger>
                   ))}
                 </TabsList>
-                {screenshots.map((screenshot) => (
-                  <TabsContent key={screenshot.id} value={screenshot.id} className="mt-0">
-                    <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-large border border-border">
+                <TabsContent value={activeScreenshot.id} className="mt-0">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-card shadow-large sm:rounded-2xl">
+                    {screenshots.map((screenshot) => (
                       <img
+                        key={screenshot.id}
                         src={screenshot.image}
                         alt={screenshot.label}
-                        className="w-full h-auto"
+                        loading="eager"
+                        className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
+                          activeTab === screenshot.id
+                            ? "scale-100 opacity-100"
+                            : "scale-[1.02] opacity-0"
+                        }`}
                       />
-                    </div>
-                  </TabsContent>
-                ))}
+                    ))}
+                  </div>
+                </TabsContent>
               </Tabs>
               
               {/* Floating Card */}

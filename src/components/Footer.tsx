@@ -1,4 +1,5 @@
 import { Facebook, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import ehazirLogo from "@/assets/ehazir-logo.png";
 
 const Footer = () => {
   const footerLinks = {
@@ -42,8 +43,12 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-3 sm:mb-4">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg gradient-accent flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg sm:text-xl">G</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 p-1.5 backdrop-blur-sm sm:h-11 sm:w-11">
+                <img
+                  src={ehazirLogo}
+                  alt="e-HAZIR logo"
+                  className="h-full w-full object-contain drop-shadow-sm"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-base sm:text-lg leading-tight">GIG Innovation</span>

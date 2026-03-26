@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import RequestDemoModal from "./RequestDemoModal";
+import ehazirLogo from "@/assets/ehazir-logo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,8 +36,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center space-x-2">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg gradient-accent flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-base sm:text-lg md:text-xl">G</span>
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 p-1.5 backdrop-blur-sm sm:h-11 sm:w-11 md:h-12 md:w-12">
+              <img
+                src={ehazirLogo}
+                alt="e-HAZIR logo"
+                className="h-full w-full object-contain drop-shadow-sm"
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-primary-foreground font-bold text-sm sm:text-base md:text-lg leading-tight">
