@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import RequestDemoModal from "./RequestDemoModal";
 import newLogo from "@/assets/new-logo.png";
 
-const Navbar = () => {
+interface NavbarProps {
+  onRequestDemo: () => void;
+}
+
+const Navbar = ({ onRequestDemo }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showDemoModal, setShowDemoModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +58,7 @@ const Navbar = () => {
             ))}
             <Button 
               className="gradient-accent hover:opacity-90 transition-opacity text-sm lg:text-base px-4 lg:px-6"
-              onClick={() => setShowDemoModal(true)}
+              onClick={onRequestDemo}
             >
               Request Demo
             </Button>
@@ -87,18 +89,12 @@ const Navbar = () => {
           ))}
           <Button 
             className="w-full mt-3 sm:mt-4 gradient-accent text-sm sm:text-base"
-            onClick={() => setShowDemoModal(true)}
+            onClick={onRequestDemo}
           >
             Request Demo
           </Button>
         </div>
       )}
-
-      {/* Request Demo Modal */}
-      <RequestDemoModal 
-        isOpen={showDemoModal}
-        onClose={() => setShowDemoModal(false)}
-      />
     </nav>
   );
 };

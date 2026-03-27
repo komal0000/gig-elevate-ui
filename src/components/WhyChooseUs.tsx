@@ -1,6 +1,10 @@
 import { Sparkles, Shield, WifiOff, MapPin } from "lucide-react";
 
-const WhyChooseUs = () => {
+interface WhyChooseUsProps {
+  onRequestDemo: () => void;
+}
+
+const WhyChooseUs = ({ onRequestDemo }: WhyChooseUsProps) => {
   const reasons = [
     {
       icon: Sparkles,
@@ -93,7 +97,11 @@ const WhyChooseUs = () => {
                 for their digital transformation journey.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <button className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base gradient-accent text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity">
+                <button
+                  type="button"
+                  onClick={onRequestDemo}
+                  className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base gradient-accent text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity"
+                >
                   Schedule a Demo
                 </button>
                 <button className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base border-2 border-border rounded-lg font-semibold text-foreground hover:bg-muted transition-colors">

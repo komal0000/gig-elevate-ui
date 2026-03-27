@@ -65,7 +65,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Visit Us",
       content: "Damak-4, Jhapa, Koshi Province, Nepal",
-      link: "#",
+      link: "https://www.google.com/maps/search/?api=1&query=Damak-4%2C+Jhapa%2C+Koshi+Province%2C+Nepal",
     },
     {
       icon: Phone,
@@ -131,13 +131,15 @@ const Contact = () => {
                 ))}
               </div>
 
-              {/* Map Placeholder */}
-              <div className="rounded-xl overflow-hidden shadow-medium h-48 sm:h-56 md:h-64 bg-muted flex items-center justify-center">
-                <div className="text-center px-4">
-                  <MapPin className="text-accent mx-auto mb-2" size={40} />
-                  <p className="text-sm sm:text-base text-muted-foreground font-semibold">Damak-4, Jhapa</p>
-                  <p className="text-xs sm:text-sm text-muted-foreground">Koshi Province, Nepal</p>
-                </div>
+              {/* Embedded map for the office location */}
+              <div className="rounded-xl overflow-hidden shadow-medium h-48 sm:h-56 md:h-64 border border-primary-foreground/10">
+                <iframe
+                  title="GIG Innovation office location"
+                  className="w-full h-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src="https://maps.google.com/maps?q=Damak-4%2C%20Jhapa%2C%20Koshi%20Province%2C%20Nepal&z=14&output=embed"
+                />
               </div>
             </div>
 
